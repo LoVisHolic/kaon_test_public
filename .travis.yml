@@ -15,4 +15,15 @@ branches:
   only:
     - main
     - develop
+install:
+  - git clone --quiet --depth 1 https://github.com/robotpilot/ros2ci.git .ros2ci
+jobs:
+  include:
+    - script: .ros2ci/travis.bash foxy
+env:
+  matrix:
+    - ROS_DISTRO=kinetic ROS_REPO=ros-shadow-fixed UPSTREAM_WORKSPACE=debian OS_NAME=ubuntu OS_CODE_NAME=xenial
+    - ROS_DISTRO=melodic ROS_REPO=ros-shadow-fixed UPSTREAM_WORKSPACE=debian OS_NAME=ubuntu OS_CODE_NAME=bionic
+    - ROS_DISTRO=galactic ROS_REPO=ros-shadow-fixed UPSTREAM_WORKSPACE=debian OS_NAME=ubuntu OS_CODE_NAME=focal
 
+[출처] 053 CI & Lint (오픈소스 소프트웨어 & 하드웨어: 로봇 기술 공유 카페 (오로카)) | 작성자 표윤석
