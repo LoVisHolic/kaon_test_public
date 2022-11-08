@@ -1,4 +1,6 @@
-language: shell
+language: python
+python : "3.9"
+sudo : required
 os: linux
 dist: focal
 arch: amd64
@@ -13,8 +15,4 @@ branches:
   only:
     - main
     - develop
-install:
-  - git clone --quiet --depth 1 https://github.com/robotpilot/ros2ci.git .ros2ci
-jobs:
-  include:
-    - script: .ros2ci/travis.bash foxy
+
